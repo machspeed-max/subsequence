@@ -1,27 +1,22 @@
+function strLen(str) {
+    let strLength = 0;
+    while (str[strLength] != undefined) {
+        strLength++;
+    }
+    return strLength;
+}
+
 function subsequence(str1, str2) {
     let subsqnc1 = "";
     let subsqnc2 = "";
-    let strLength1 = 0;
-    let strLength2 = 0;
-    let subsqncLength1 = 0;
-    let subsqncLength2 = 0;
     let result = "";
-    
-    while (str1[strLength1] != undefined) {
-        strLength1++;
-    }
-    while (str2[strLength2] != undefined) {
-    	strLength2++;
-    }
-    while (subsqnc1[subsqncLength1] != undefined) {
-        subsqncLength1++;
-    }
-    while (subsqnc2[subsqncLength2] != undefined) {
-        subsqncLength2++;
-    }
+    let strLen1 = strLen(str1);
+    let strLen2 = strLen(str2);
+    let subsqncLen1 = strLen(subsqnc1);
+    let subsqncLen2 = strLen(subsqnc2);
 
-    for (x = 0; x < strLength1; x++) {
-        for (y = 0; y < strLength2; y++) {
+    for (x = 0; x < strLen1; x++) {
+        for (y = 0; y < strLen2; y++) {
             if (str1[x] == str2[y]) {
                 if (x <= y) {
                     subsqnc1 += str1[x];
@@ -33,16 +28,16 @@ function subsequence(str1, str2) {
         }
     }
 
-    if (subsqncLength1 == subsqncLength2 && subsqnc1 == subsqnc2){
+    if (subsqncLen1 == subsqncLen2 && subsqnc1 == subsqnc2){
         result = `"${subsqnc1}"`;
     }
-    if (subsqncLength1 == subsqncLength2 && subsqnc1 != subsqnc2) {
-        result = `"${subsqnc1}" "${subsqnc2}"`;
+    if (subsqncLen1 == subsqncLen2 && subsqnc1 != subsqnc2) {
+        result = `"${subsqnc1}", "${subsqnc2}"`;
     }
-    if (subsqncLength1 > subsqncLength2) {
+    if (subsqncLen1 > subsqncLen2) {
         result = `"${subsqnc1}"`;
     }
-    if (subsqncLength1 < subsqncLength2) {
+    if (subsqncLen1 < subsqncLen2) {
         result = `"${subsqnc2}"`;
     }
     console.log(`Parameter: "${str1}", "${str2}"`);
